@@ -49,6 +49,12 @@ app.use(flash());
 // Helper dinamico:
 app.use(function(req, res, next) {
 
+   if(req.session.expire> new Date()){
+      req.session.destroy();
+   } else {
+      req.session.expire = new Date()
+   }
+
    // Hacer visible req.session en las vistas
    res.locals.session = req.session;
 
