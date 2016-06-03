@@ -5,6 +5,13 @@
   <%- paginate_control %>
 <% } %>
 
+<p>
+  <form method="get" action="/quizzes/search">        
+      <input type="text" name="search" placeholder="Busqueda" />
+      <input type="submit" value="Buscar">
+  </form>
+</p>
+
 <table>
   <% for (var i in quizzes) { %> 
      <tr>
