@@ -10,6 +10,7 @@ module.exports = {
              QuizId:    { type: Sequelize.INTEGER },
              text:      { type: Sequelize.STRING,   unique: true,
                           validate: { notEmpty: {msg: "Falta Comentario"} } },
+             author:    { type: Sequelize.INTEGER },
              createdAt: { type: Sequelize.DATE,     allowNull: false },
              updatedAt: { type: Sequelize.DATE,     allowNull: false }
            },

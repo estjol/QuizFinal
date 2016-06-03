@@ -45,6 +45,7 @@ User.belongsToMany(Quiz, {as: 'Favourites',
 Quiz.belongsToMany(User, {as: 'Fans',
                           through: 'Favourites'}); 
 
+
 // Relaciones entre modelos
 Comment.belongsTo(Quiz);
 Quiz.hasMany(Comment);
@@ -57,6 +58,9 @@ Quiz.belongsTo(User, {as: 'Author', foreignKey: 'AuthorId'});
 Attachment.belongsTo(Quiz);
 Quiz.hasOne(Attachment);
 
+// Relaciones 1-a-N Comment y User
+User.hasMany(Comment, {foreignKey: 'AuthorId'});
+Comment.belongsTo(User,{as: 'Author', foreignKey: 'AuthorId'});
 
 exports.Quiz = Quiz;       // exportar definición de tabla Quiz
 exports.Comment = Comment; // exportar definición de tabla Comments

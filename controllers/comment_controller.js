@@ -20,7 +20,7 @@ exports.load = function(req, res, next, commentId) {
 
 // GET /quizzes/:quizId/comments/new
 exports.new = function(req, res, next) {
-  var comment = models.Comment.build({text: ""});
+  var comment = models.Comment.build({text: "", author: req.session.user.id});
 
   res.render('comments/new', { comment: comment, 
   	                           quiz: req.quiz
@@ -32,7 +32,8 @@ exports.new = function(req, res, next) {
 exports.create = function(req, res, next) {
   var comment = models.Comment.build(
       { text:   req.body.comment.text,          
-        QuizId: req.quiz.id
+        QuizId: req.quiz.id,
+        author: req.session.user.id
       });
 
   comment.save()
